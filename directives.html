@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+        .blue {
+            color: blue;
+        }
+        .is-loading {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <button v-bind:title="title">Hover over me</button>
+        <input type="text" id="input" v-model="message">
+        <button :disabled="isDisabled" @click="toggleClass">Toggle me</button>
+        <p>Value is {{ message }}</p>
+        <input type="text" id="new-name" v-model="newName">
+        <button @click="addName">add name</button>
+        <ul>
+            <li v-for="name in names" v-text="name"></li>
+        </ul>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#root',
+            data: {
+                message: "Hello",
+                title: 'I am a button',
+                foo: 'Yo!',
+                className: "red",
+                isDisabled: false,
+                isDisabled: false,
+                newName: '',
+                isLoading: false,
+                names: ['JOe', 'Mary', 'Jane', 'Jack']
+            },
+            methods: {
+                addName() {
+                    this.names.push(this.newName);
+                    this.newName = '';
+                },
+                toggleClass(){
+                    this.isDisabled = true;
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>
